@@ -18,3 +18,13 @@ body {
   align-items: center;
   border-radius: 10px;
 }
+.label {
+  font-size: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 3px;
+  pointer-events: none;  // Prevent interaction with the label
+  position: absolute;
+}
+
