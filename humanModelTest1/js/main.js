@@ -41,7 +41,7 @@ loader.load(
     // Enable raycasting on each mesh part (for interaction)
     humanModel.traverse((child) => {
       if (child.isMesh) {
-        child.userData.isClickable = true; // Mark as clickable
+        child.userData.isClickable = true; // Mark as cslickable
         child.name = child.name || "body"; // Add a name to each part (e.g., head, arm)
 
         // Ensure that materials are double-sided so the back of the model is visible
@@ -79,17 +79,17 @@ camera.position.z = 1.4; // Adjust the zoom distance (ideal distance for good vi
 camera.position.y = 0.3; // Adjust this based on your human model size
 
 // Add lights to the scene
-const topLight = new THREE.DirectionalLight(0x5f88a4, 0.5); // A subtle blue light
-topLight.position.set(500, 500, 500);
+const topLight = new THREE.DirectionalLight(0xffffff, 0.6); // A subtle blue light
+topLight.position.set(0.756, 11.231, 13.484);
 topLight.castShadow = true;
 scene.add(topLight);
 
-const ambientLight = new THREE.AmbientLight(0x1c2b3c, 0.3); // Cooler, dim ambient light for subtle effect
+const ambientLight = new THREE.AmbientLight(0x73509f, 0.4); // Cooler, dim ambient light for subtle effect
 scene.add(ambientLight);
 
 // Additional light source to illuminate the back of the model
-const backLight = new THREE.DirectionalLight(0x3a506b, 0.3); // Dim blue light from the back
-backLight.position.set(-500, -500, -500);
+const backLight = new THREE.DirectionalLight(0xffffff, 0.6); // Dim blue light from the back
+backLight.position.set(-0.741, 9.037, -11.487);
 backLight.castShadow = true;
 scene.add(backLight);
 
@@ -100,7 +100,7 @@ controls = new OrbitControls(camera, renderer.domElement);
 // Bind OrbitControls only to the container3D div
 controls.enableZoom = false;  // Disable zooming in and out
 controls.enableRotate = true; // Enable rotation
-controls.enablePan = true;    // Enable panning (right-click to pan)
+controls.enablePan = false;    // Enable panning (right-click to pan)
 controls.enableDamping = false;
 
 // Raycasting for clicking on body parts
