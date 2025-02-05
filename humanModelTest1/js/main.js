@@ -117,15 +117,20 @@ window.addEventListener("click", (event) => {
 
   if (intersects.length > 0) {
     const clickedBox = intersects[0].object;
-    const index = clickableBoxes.indexOf(clickedBox);
-    const urls = [
-      "https://example.com/head",
-      "https://example.com/left-arm",
-      "https://example.com/right-arm",
-      "https://example.com/torso"
-    ];
-    window.location.href = urls[index];
+    console.log('Clicked box:', clickedBox);
+
+    // Example action: navigate to a link when a box is clicked
+    if (clickedBox === clickableBoxes[0]) {
+      window.location.href = "https://example.com/head";
+    } else if (clickedBox === clickableBoxes[1]) {
+      window.location.href = "https://example.com/left-arm";
+    } else if (clickedBox === clickableBoxes[2]) {
+      window.location.href = "https://example.com/right-arm";
+    } else if (clickedBox === clickableBoxes[3]) {
+      window.location.href = "https://example.com/torso";
+    }
   }
+
 
   if (hoveredBox) {
     hoveredBox.material.color.setHex(originalColors.get(hoveredBox));
