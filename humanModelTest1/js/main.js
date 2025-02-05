@@ -50,29 +50,50 @@ loader.load(
       transparent: true,
       opacity: 0.5,
       reflectivity: 0.9,
-      refractionRatio: 0.98,
-      roughness: 0,
-      clearcoat: 1.0,
+      refractionRatio: 0,
+      roughness: 0.4,
+      clearcoat: 0,
       clearcoatRoughness: 0.1,
       metalness: 0
     });
 
     const geometryHead = new THREE.BoxGeometry(0.2, 0.25, 0.28);
-    const geometryArm = new THREE.BoxGeometry(0.1, 0.8, 0.2);
+    const geometryUpperArm = new THREE.BoxGeometry(0.1,0.3,0.17);
+    const geometryForearm = new THREE.BoxGeometry(0.1, 0.315, 0.12);
+    const geometryUpperChest = new THREE.BoxGeometry(0.29,0.13,0.015);
+    const geometryTorso = new THREE.BoxGeometry(0.29,0.33,0.015);
 
     const boxes = [
-      new THREE.Mesh(geometryHead, createBoxMaterial()),
-      new THREE.Mesh(geometryArm, createBoxMaterial()),
-      new THREE.Mesh(geometryArm, createBoxMaterial()),
-      new THREE.Mesh(geometryHead, createBoxMaterial())
+      new THREE.Mesh(geometryHead, createBoxMaterial()), // head
+      new THREE.Mesh(geometryUpperArm, createBoxMaterial()), // upper left arm
+      new THREE.Mesh(geometryUpperArm, createBoxMaterial()), // upper right arm
+      new THREE.Mesh(geometryForearm, createBoxMaterial()), // left forearm
+      new THREE.Mesh(geometryForearm, createBoxMaterial()), // right forearm
+      new THREE.Mesh(geometryUpperChest, createBoxMaterial()), // right forearm
+      new THREE.Mesh(geometryTorso,createBoxMaterial())
     ];
 
     // Position boxes
-    boxes[0].position.set(0, 1.66, -0.03); // head box
-    boxes[1].position.set(-0.25, 1.1, -0.07); // left arm
-    boxes[2].position.set(0.3, 1.1, -0.09); // right arm
-    boxes[3].position.set(0, 0.2, 0); //down currently nothing
-    boxes[1].rotation.x = -Math.PI / 18; // arm box tilt
+    // boxes[0].position.set(0, 1.671, -0.03); // head box
+    boxes[0].position.set(0,5,0);
+    boxes[1].position.set(-0.23, 1.335, -0.098); // upper left arm
+    boxes[2].position.set(0.23, 1.335, -0.098); // upper right arm
+    boxes[3].position.set(-0.2868, 1.03, -0.07); // left forearm
+    boxes[4].position.set(0.2868, 1.03, -0.07); // right forearm
+    boxes[5].position.set(0,1.37,0.1); // upper chest
+    boxes[6].position.set(0,1.14,0.1);
+
+    //rotations
+    boxes[1].rotation.x = Math.PI / 18; // upper left arm box tilt
+    boxes[2].rotation.x = Math.PI / 18; //upper right arm tilt
+    boxes[3].rotation.x = -Math.PI / 8; //left forearm z tilt
+    boxes[3].rotation.z = -Math.PI / 15; // left forearm x tilt
+    boxes[4].rotation.x = -Math.PI / 8; // right forearm z tilt
+    boxes[4].rotation.z = Math.PI / 15; // right forearm x tilt
+    boxes[5].rotation.x = -Math.PI / 13; // upper chest z tilt
+    boxes[6].rotation.x = Math.PI / 40; // torso z tilt
+
+    
 
     // Add boxes to scene
     boxes.forEach(box => {
